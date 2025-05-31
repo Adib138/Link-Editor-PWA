@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Link Editor Tool</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <meta name="theme-color" content="#0af">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-film"></i> Link Editor</h1>
+      <button id="themeToggle" title="Toggle theme"><i class="fas fa-adjust"></i></button>
+    </header>
+
+    <section class="upload-section">
+      <input type="file" id="fileInput" accept=".txt">
+      <button onclick="uploadFile()"><i class="fas fa-upload"></i> Upload</button>
+    </section>
+
+    <section class="manual-input">
+      <textarea id="manualInput" placeholder="Or paste links manually here..."></textarea>
+    </section>
+
+    <section class="controls">
+      <input type="text" id="character" placeholder="Char" maxlength="1">
+      <input type="text" id="replacement" placeholder="Replacement (optional)">
+      <button onclick="processText()"><i class="fas fa-magic"></i> Process</button>
+      <button onclick="clearAll()"><i class="fas fa-eraser"></i> Clear</button>
+      <button onclick="copyOutput()"><i class="fas fa-copy"></i> Copy Output</button>
+    </section>
+
+    <section>
+      <textarea id="output" placeholder="Processed links will appear here..."></textarea>
+    </section>
+
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script src="./assets/script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch(err => console.log("SW registration failed:", err));
+    }
+  </script>
+</body>
+</html>

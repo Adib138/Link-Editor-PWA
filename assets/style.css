@@ -1,0 +1,129 @@
+:root {
+  --bg-gradient-light: linear-gradient(135deg, #ffffff, #dddddd);
+  --bg-gradient-dark: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+  --text-light: #222;
+  --text-dark: #eee;
+  --button-bg: #444;
+  --button-hover: #666;
+  --accent-color: #0af;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-gradient-light);
+  color: var(--text-light);
+  transition: background 0.5s, color 0.3s;
+}
+
+body.dark {
+  background: var(--bg-gradient-dark);
+  color: var(--text-dark);
+}
+
+.container {
+  max-width: 720px;
+  margin: auto;
+  padding: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.8em;
+  margin: 0;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: inherit;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: border 0.3s;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+button {
+  padding: 10px 18px;
+  margin: 8px 5px 0 0;
+  background: var(--button-bg);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+#themeToggle {
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #000a;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  display: none;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  textarea {
+    font-size: 0.95em;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
